@@ -16,13 +16,20 @@ class Budget:
   def deposit_funds(self,amount, description= 'credit'):
     self.ledger.append({"amount": amount, "description": description })
     self.amount += amount 
+    print(self.ledger)
     return 'transaction completed'
 
   def check_funds(self, amount):
      return True if amount <= self.amount else False
   
   def withdraw_funds(self, amount, description='debit'):
-   if self.check_funds(amount):
+    print('*****Withdraw amount from wallet')
+    print('Available budgets:')
+
+    for budget in self.ledger:
+      print(budget.category)
+
+    if self.check_funds(amount):
       self.amount -= amount
       self.ledger.append({"amount": -amount, "description": description })
 
